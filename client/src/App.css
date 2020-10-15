@@ -16,8 +16,9 @@ body {
 
 .app {
     display: grid;
-    grid-template-rows: 65vh 35vh;
+    grid-template-rows: 5vh 60vh 35vh;
     grid-template-areas: 
+    'login'
     'image'
     'nav';
     height: 100vh;

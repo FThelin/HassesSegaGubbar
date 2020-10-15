@@ -1,0 +1,20 @@
+.login {
+    grid-area: login;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 4rem;
+}
+
+.login button {
+    margin-right: 2rem;
+}
+
+.login-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 13rem;
+    margin-top: 1rem;
+}
