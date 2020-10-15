@@ -1,4 +1,3 @@
-import { Divider } from '@material-ui/core'
 import React from 'react'
 import './main.css'
 import Playerscores from './playerscores/playerscores'

@@ -4,10 +4,16 @@
     align-items: center;
     justify-content: flex-end;
     height: 4rem;
+    color: rgb(202, 202, 202);
+    margin-right: 2rem;
 }
 
-.login button {
-    margin-right: 2rem;
+.login .divider {
+    font-size: 1.2rem;
+}
+
+.login p {
+    font-size: 0.9rem;
 }
 
 .login-form {
@@ -15,6 +21,11 @@
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    height: 13rem;
+    min-height: 13rem;
     margin-top: 1rem;
+}
+
+.error-message {
+    color: rgb(214, 44, 44);
+    font-size: 0.9rem;
 }

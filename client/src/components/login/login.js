@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './login.css'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,6 +6,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import TextField from '@material-ui/core/TextField'
+import { useUserContext } from '../../context/userContext';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -23,22 +24,36 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login() {
+
+  const { loginUser, loggedInUser, successfulLogin } = useUserContext()
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [username, setUsername] = React.useState("")
+  const [password, setPassword] = React.useState("")
 
   const handleOpen = () => {
-    setOpen(true);
+    setOpen(true);    
   };
 
   const handleClose = () => {
     setOpen(false);
   };
+  
+  useEffect(() => {
+    if (successfulLogin) {
+      setOpen(false)
+    }
+  }, [successfulLogin])
 
-  return (
+  return (   
     <div>
-        <div className={"login"}>
-            <Button variant="contained" color="secondary" onClick={handleOpen}>Logga in</Button>           
-        </div>
+      <div className={"login"}>        
+      {!loggedInUser ? (
+        <Button variant="contained" color="secondary" onClick={handleOpen}>Logga in</Button>           
+      ) : <p>{loggedInUser}<span><span className={"divider"}> | </span>Logga ut</span></p>}
+    </div>
+        
       <Modal               
         className={classes.modal}
         open={open}
@@ -51,19 +66,24 @@ export default function Login() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-          <form className={classes.root} validate autoComplete="off" onSubmit={() => alert("inloggad")}>
+          <form className={classes.root} autoComplete="off">
             <h4>Logga in för att kunna registrera dina resultat.</h4>
             <div className={"login-form"}>
-                <TextField required id="standard-basic" label="Användarnamn" />
-                <TextField required id="standard-basic" type="password" label="Lösenord" />
+                <TextField required label="Användarnamn" value={username} onChange={(e) => setUsername(e.target.value)}/>
+                <TextField required type="password" label="Lösenord" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <div style={{padding: "1rem"}}>
-                    <Button type="submit" variant="contained" color="primary">Logga in</Button>
+                    <Button type="button" variant="contained" color="primary" onClick={() => loginUser({username, password})}>Logga in</Button>
                 </div>
+                {!successfulLogin && (
+                  <div className={"error-message"}>
+                    <p>Något gick fel med inloggningen</p>
+                  </div>
+                )}
             </div>
           </form>
           </div>
         </Fade>
-      </Modal>
+      </Modal>    
     </div>
   );
 }

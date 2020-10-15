@@ -6,17 +6,21 @@ import { ThemeProvider } from '@material-ui/core';
 import Main from './components/main/main'
 import Login from './components/login/login'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { UserProvider } from './context/userContext'
 
 function App() { 
+
   return (
     <div className="app">
-      <ThemeProvider theme={theme}>
-        <Login />
-        <Router>
-          <Main />        
-          <Navbar />
-        </Router>
-      </ThemeProvider>
+        <ThemeProvider theme={theme}>
+      <UserProvider>
+          <Login />
+          <Router>
+            <Main />        
+            <Navbar />
+          </Router>
+      </UserProvider>
+        </ThemeProvider>
     </div>
   );
 }
