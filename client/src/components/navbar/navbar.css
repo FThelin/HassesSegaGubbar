@@ -1,0 +1,40 @@
+.navbar-container {
+    grid-area: nav;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(163, 163, 163);
+}
+
+.navbar-image-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.navbar-container img {
+    width: 50%;
+}
+
+.navbar {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 25rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: rgb(163, 163, 163);
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+.navbar p {
+    font-size: 1.3rem;
+}
+
+.navbar a:hover {
+    color: #45A29E;
+}

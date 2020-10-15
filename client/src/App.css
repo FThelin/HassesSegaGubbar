@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto'; 
+}
+
+body {
+    background-color: #06090D;
+    background-image: url('./img/bg.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top center;
+    height: 100vh;
+}
+
+.app {
+    display: grid;
+    grid-template-rows: 65vh 35vh;
+    grid-template-areas: 
+    'image'
+    'nav';
+    height: 100vh;
+}
