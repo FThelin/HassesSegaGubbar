@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const usersRoute = require("./routes/users");
+const gamesRoute = require("./routes/games");
 const cookieSession = require("cookie-session");
 const port = process.env.PORT || 5000;
 
@@ -30,6 +31,7 @@ app.use(function (req, res, next) {
 
 //Middlewares
 app.use("/users", usersRoute);
+app.use("/games", gamesRoute);
 
 //Connect to database
 const options = { useUnifiedTopology: true, useNewUrlParser: true };

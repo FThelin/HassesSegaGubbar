@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className={"navbar"}>
         <Link to="/scores">POÄNGLIGAN</Link>
         <p>|</p>
-        <a href="#">MATCHER</a>
+        <Link to="/games">MATCHER</Link>
         <p>|</p>
         <a href="#">TABELL</a>
       </div>

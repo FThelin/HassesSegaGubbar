@@ -1,6 +1,7 @@
 import React from 'react'
 import './main.css'
 import Playerscores from './playerscores/playerscores'
+import Games from './games/games'
 import { Route } from 'react-router-dom'
 
 const Main = () => {
@@ -8,6 +9,9 @@ const Main = () => {
         <div className="main">  
             <Route path="/scores">
                 <Playerscores />
+            </Route>
+            <Route path="/games">
+                <Games />
             </Route>
         </div>
     )
