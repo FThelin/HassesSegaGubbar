@@ -59,7 +59,7 @@ export default function Login() {
           </Button>
         ) : (
           <p>
-            {loggedInUser}
+            {loggedInUser.username}
             <span className={"divider"}> | </span>
             <span onClick={() => logoutUser()} className={"logout"}>
               Logga ut

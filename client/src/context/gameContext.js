@@ -23,10 +23,26 @@ export const GameProvider = ({ children }) => {
     }
   }
 
+  async function addResult(gameId, userId, data) {
+    const response = await fetch(`http://localhost:5000/games/${gameId}/${userId}`, {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.status === 200) {
+      //const responseData = await response.json();
+     getGames("2020")
+    } else if (response.status === 400) {
+      console.log("error");
+    }
+  }
   
   return (
     <GameContext.Provider
-      value={{ seasonGames }}
+      value={{ seasonGames, addResult }}
     >
       {children}
     </GameContext.Provider>

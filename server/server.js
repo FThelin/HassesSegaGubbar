@@ -30,8 +30,8 @@ app.use(function (req, res, next) {
 });
 
 //Middlewares
-app.use("/users", usersRoute);
 app.use("/games", gamesRoute);
+app.use("/users", usersRoute);
 
 //Connect to database
 const options = { useUnifiedTopology: true, useNewUrlParser: true };

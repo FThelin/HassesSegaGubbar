@@ -2,9 +2,9 @@ POST http://localhost:5000/users/register
 Content-Type: application/json
 
 {
-"username": "FThelin",
+"username": "NThelin",
 "password": "Minora0805",
-"name": "Fredrik Thelin"
+"name": "Nilas Thelin"
 }
 
 ###

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { moveMessagePortToContext } = require("worker_threads");
 
 const GameSchema = mongoose.Schema({
   team: {
@@ -19,7 +18,10 @@ const GameSchema = mongoose.Schema({
   },
   result: {
       type: String
-  }  
+  },
+  playerResult: {
+    type: Array,
+}
 });
 
 module.exports = mongoose.model("games", GameSchema);

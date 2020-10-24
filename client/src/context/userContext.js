@@ -17,7 +17,6 @@ export const UserProvider = ({ children }) => {
   const getLoggedInUser = () => {
     if (document.cookie) {
       let user = JSON.parse(localStorage.getItem("user"));
-
       setLoggedInUser(user);
     } else {
       localStorage.clear();
@@ -37,9 +36,9 @@ export const UserProvider = ({ children }) => {
       setSuccessfulLogin(true);
       const responseData = await response.json();
 
-      localStorage.setItem("user", JSON.stringify(responseData.username));
+      localStorage.setItem("user", JSON.stringify(responseData));
 
-      setLoggedInUser(responseData.username);
+      setLoggedInUser(responseData);
     } else if (response.status === 401) {
       setSuccessfulLogin(false);
     }
