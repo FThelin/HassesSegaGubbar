@@ -8,11 +8,14 @@ export function useGameContext() {
 
 export const GameProvider = ({ children }) => {
   const [seasonGames, setSeasonGames] = useState([]);
+  const [seasonResults, setSeasonResults] = useState([])
 
   useEffect(() => {
       getGames("2020")
+      getResults()
   }, [])
 
+  //Get all games in season
   async function getGames(season) {
     try {
       const response = await fetch(`http://localhost:5000/games/${season}`, {});
@@ -23,8 +26,38 @@ export const GameProvider = ({ children }) => {
     }
   }
 
+  //Get all results
+  async function getResults() {
+    try {
+      const response = await fetch('http://localhost:5000/games/results', {});
+      const data = await response.json();
+      setSeasonResults(data)
+    } catch {
+      console.log("Error");
+    }
+  }
+
+  //Add new player result
   async function addResult(gameId, userId, data) {
     const response = await fetch(`http://localhost:5000/games/${gameId}/${userId}`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.status === 200) {
+     getGames("2020")
+     getResults()
+    } else if (response.status === 400) {
+      console.log("error");
+    }
+  }
+
+  //Edit player result
+  async function editResult(id, data) {
+    const response = await fetch(`http://localhost:5000/games/${id}`, {
       method: "PUT",
       credentials: "include",
       headers: {
@@ -33,16 +66,32 @@ export const GameProvider = ({ children }) => {
       body: JSON.stringify(data),
     });
     if (response.status === 200) {
-      //const responseData = await response.json();
      getGames("2020")
+     getResults()
     } else if (response.status === 400) {
       console.log("error");
+    }
+  }
+
+    async function deleteResult(id) {
+    try {
+      await fetch(`http://localhost:5000/games/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      getGames("2020")
+      getResults()
+    } catch {
+      console.log("Error");
     }
   }
   
   return (
     <GameContext.Provider
-      value={{ seasonGames, addResult }}
+      value={{ seasonGames, addResult, seasonResults, editResult, deleteResult }}
     >
       {children}
     </GameContext.Provider>

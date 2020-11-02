@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -12,8 +12,10 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { useGameContext } from '../../../context/gameContext'
 
 const PlayerResult = (props) => {
-  const { addResult } = useGameContext()
+  const { addResult, editResult, deleteResult } = useGameContext()
   const [open, setOpen] = useState(false);
+  const [inAddMode, setInAddMode] = useState(true)
+  const [userResult, setUserResult] = useState({})
   const [result, setResult] = useState({
       goals: 0,
       assists: 0,
@@ -28,30 +30,40 @@ const PlayerResult = (props) => {
     setOpen(false);
   };
 
-  const addOrEdit = () => {    
+  useEffect(() => {
+    const addOrEdit = () => {    
       
     let foundUser = []  
-    
-    foundUser = props.playerResult.filter((result) => result.player === props.playerName)
+     
+    foundUser = props.playerResult.filter((result) => result.player.name === props.playerName)
     
     if (foundUser.length > 0) {
-      return (
-        <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
-          Redigera
-        </Button>
-          )
-        } else if (foundUser.length <= 0){
-          return (
-            <Button variant="contained" color="secondary" onClick={handleClickOpen}>
-          Lägg till
-            </Button>
-          )
-        }
+      setInAddMode(false)
+      setUserResult(foundUser)
+      setResult({
+        goals: foundUser[0].goals,
+        assists: foundUser[0].assists,
+        penalties: foundUser[0].penalties
+      })          
+      } else if (foundUser.length <= 0){
+      setInAddMode(true)
+    }
   }
+    addOrEdit()
+  }, [props.playerName, props.playerResult])
+  
 
   return (
     <div>      
-      {addOrEdit()}
+      {inAddMode ? (
+        <Button variant="contained" color="secondary" onClick={handleClickOpen}>
+          Lägg till
+            </Button>
+      ) : (
+        <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
+          Redigera
+        </Button>
+      )}
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">{props.team}</DialogTitle>
         <DialogContent>
@@ -138,9 +150,20 @@ const PlayerResult = (props) => {
           <Button onClick={handleClose} color="primary">
             Avbryt
           </Button>
-          <Button onClick={() => addResult(props.gameId, props.userId, result)} color="primary">
+          {inAddMode ? (
+            <Button onClick={() => addResult(props.gameId, props.userId, result)} color="primary">
             Lägg till
           </Button>
+          ) : (
+            <div>
+              <Button onClick={() => deleteResult(userResult[0]._id)} style={{color: "red"}}>
+              Ta bort
+            </Button>
+              <Button onClick={() => editResult(userResult[0]._id, result)} color="primary">
+              Ändra
+            </Button>
+            </div>
+          )}
         </DialogActions>
       </Dialog>
     </div>

@@ -26,18 +26,20 @@ export default function Games() {
     return {  id, date, team, result, motm, player };
   }
   
-  const { seasonGames } = useGameContext()
+  const { seasonGames, seasonResults } = useGameContext()
   const { loggedInUser } = useUserContext()
   const [rows, setRows] = useState([])
   
   useEffect(() => {     
       let temp = []    
-      for(const game of seasonGames) {
-          let x = createData(game._id, game.date, game.team, game.result, game.motm, game.playerResult)
+      for(const result of seasonGames) {
+          let playerresults = seasonResults.filter((pr) => pr.game._id === result._id)
+          
+          let x = createData(result._id, result.date, result.team, result.result, result.motm, playerresults)
           temp.push(x)
-      }
+       }
       setRows(temp)
-  }, [seasonGames])
+  }, [seasonGames, seasonResults])
 
 
   const useRowStyles = makeStyles({
@@ -67,11 +69,11 @@ export default function Games() {
           <TableCell>{row.team}</TableCell>
           <TableCell>{row.result}</TableCell>
           <TableCell>{row.motm}</TableCell>
-          {loggedInUser && (
+          {loggedInUser ? (
             <TableCell>
               <PlayerResult team={row.team} userId={loggedInUser._id} gameId={row.id} playerResult={row.player} playerName={loggedInUser.name}/>
           </TableCell>
-          )}
+          ) : null}
         </TableRow>
         <TableRow className={classes.root}>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -91,8 +93,8 @@ export default function Games() {
                   </TableHead>
                   <TableBody>
                     {row.player.map((historyRow) => (
-                      <TableRow key={historyRow.date}>
-                        <TableCell style={{color: 'white'}}>{historyRow.player}</TableCell>
+                      <TableRow key={historyRow._id}>
+                        <TableCell style={{color: 'white'}}>{historyRow.player.name}</TableCell>
                         <TableCell style={{color: 'white'}}>{historyRow.goals}</TableCell>
                         <TableCell style={{color: 'white'}}>{historyRow.assists}</TableCell>
                         <TableCell style={{color: 'white'}}>{historyRow.penalties}</TableCell>                      
@@ -114,29 +116,26 @@ export default function Games() {
           <TableContainer component={Paper} style={{backgroundColor: "rgba(255,255,255,0.2)", boxShadow: '8px 8px 16px black', borderRadius: 15}}>
           <Table aria-label="collapsible table">
               <TableHead>
-              <TableRow>
+                <TableRow>
                   <TableCell />
                   <TableCell style={{color: "#66FCF1"}}>DATUM</TableCell>
                   <TableCell style={{color: "#66FCF1"}}>MATCH</TableCell>
                   <TableCell style={{color: "#66FCF1"}}>RESULTAT</TableCell>
                   <TableCell style={{color: "#66FCF1"}}>MOTM</TableCell>
-                  {loggedInUser && (
+                  {loggedInUser ? (
                     <TableCell style={{color: "#66FCF1"}}>DITT RESULTAT</TableCell>
-                  )}
-              </TableRow>
+                  ) : null}
+                </TableRow>
               </TableHead>
               <TableBody>
               {rows.map((row) => (
-                  <Row key={row.name} row={row} />
+                  <Row key={row.id} row={row} />
               ))}
               </TableBody>
           </Table>
           </TableContainer>
       </div>
     );
-  
-
-
 }
 
 

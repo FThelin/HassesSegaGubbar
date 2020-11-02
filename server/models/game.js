@@ -18,10 +18,7 @@ const GameSchema = mongoose.Schema({
   },
   result: {
       type: String
-  },
-  playerResult: {
-    type: Array,
-}
+  }
 });
 
 module.exports = mongoose.model("games", GameSchema);
