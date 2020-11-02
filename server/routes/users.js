@@ -58,4 +58,23 @@ router.post("/logout", async (req, res) => {
   }
 });
 
+// Update user password
+router.put("/:id", async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.params.id });
+
+    console.log(req.body)
+
+    const newPassword = await bcrypt.hash(req.body.password, 10);
+
+    user.password = newPassword;
+
+    await user.save();
+
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;

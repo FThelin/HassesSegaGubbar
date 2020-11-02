@@ -10,6 +10,7 @@
 
 .login .divider {
   font-size: 1.2rem;
+  margin: 0 1rem;
 }
 
 .login p {
@@ -25,7 +26,7 @@
   margin-top: 1rem;
 }
 
-.logout:hover {
+.logout:hover, .username:hover {
   text-decoration: underline;
   cursor: pointer;
 }

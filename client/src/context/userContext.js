@@ -59,10 +59,27 @@ export const UserProvider = ({ children }) => {
       console.log(error);
     }
   }
+  
+  //Update user password
+  async function updateUser(id, value) {
+    try {
+      console.log(id, value)
+      await fetch(`http://localhost:5000/users/${id}`, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({password: value}),
+      });
+    } catch {
+      console.log("Error");
+    }
+  }
 
   return (
     <UserContext.Provider
-      value={{ loggedInUser, successfulLogin, loginUser, logoutUser }}
+      value={{ loggedInUser, successfulLogin, loginUser, logoutUser, updateUser }}
     >
       {children}
     </UserContext.Provider>

@@ -7,6 +7,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import TextField from "@material-ui/core/TextField";
 import { useUserContext } from "../../context/userContext";
+import ChangePassword from "./changePassword"
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -58,8 +59,8 @@ export default function Login() {
             Logga in
           </Button>
         ) : (
-          <p>
-            {loggedInUser.username}
+          <p style={{display: "flex"}}>
+          <ChangePassword />
             <span className={"divider"}> | </span>
             <span onClick={() => logoutUser()} className={"logout"}>
               Logga ut
