@@ -9,7 +9,9 @@
   "dependencies": {
     "express":"*",
     "body-parser":"*",
-    "bcrypt": "^5.0.0"
+    "bcrypt": "^5.0.0",
+    "mongoose": "*",
+    "cookie-session": "*"
  },
   "repository": {
     "type": "git",
