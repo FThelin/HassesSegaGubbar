@@ -1,11 +1,11 @@
-GET http://localhost:5000/games/2020
+GET https://hasses-sega-gubbar.herokuapp.com/games/2020
 ###
 
-GET http://localhost:5000/games/results
+GET https://hasses-sega-gubbar.herokuapp.com/games/results
 
 ###
 
-POST http://localhost:5000/games/5f8ab6bbdea6f84aba92294c/5f99c46ddb7ced2d2435c1f6
+POST https://hasses-sega-gubbar.herokuapp.com/games/5f8ab6bbdea6f84aba92294c/5f99c46ddb7ced2d2435c1f6
 Content-Type: application/json
 
 { 
@@ -16,7 +16,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:5000/games/5f995f8cd463033f20093b87
+PUT https://hasses-sega-gubbar.herokuapp.com/games/5f995f8cd463033f20093b87
 Content-Type: application/json
 
 {
@@ -27,5 +27,5 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:5000/games/5f995f8cd463033f20093b87
+DELETE https://hasses-sega-gubbar.herokuapp.com/games/5f995f8cd463033f20093b87
 ###
