@@ -24,7 +24,7 @@ export const UserProvider = ({ children }) => {
   };
 
   async function loginUser(data) {
-    const response = await fetch("http://localhost:5000/users/login", {
+    const response = await fetch("https://hasses-sega-gubbar.herokuapp.com/users/login", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -47,7 +47,7 @@ export const UserProvider = ({ children }) => {
   //Logout user
   async function logoutUser() {
     try {
-      await fetch("http://localhost:5000/users/logout", {
+      await fetch("https://hasses-sega-gubbar.herokuapp.com/users/logout", {
         method: "POST",
         credentials: "include",
       });
@@ -64,7 +64,7 @@ export const UserProvider = ({ children }) => {
   async function updateUser(id, value) {
     try {
       console.log(id, value)
-      await fetch(`http://localhost:5000/users/${id}`, {
+      await fetch(`https://hasses-sega-gubbar.herokuapp.com/users/${id}`, {
         method: "PUT",
         credentials: "include",
         headers: {

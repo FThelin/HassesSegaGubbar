@@ -18,7 +18,7 @@ app.use(
 
 //CORS handling
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Origin", "https://hasses-sega-gubbar.herokuapp.com");
   res.header({
     "Access-Control-Allow-Origin": req.headers.origin,
     "Access-Control-Allow-Credentials": true,

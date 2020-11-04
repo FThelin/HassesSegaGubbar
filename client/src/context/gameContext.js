@@ -18,7 +18,7 @@ export const GameProvider = ({ children }) => {
   //Get all games in season
   async function getGames(season) {
     try {
-      const response = await fetch(`http://localhost:5000/games/${season}`, {});
+      const response = await fetch(`https://hasses-sega-gubbar.herokuapp.com/games/${season}`, {});
       const data = await response.json();
       setSeasonGames(data)
     } catch {
@@ -29,7 +29,7 @@ export const GameProvider = ({ children }) => {
   //Get all results
   async function getResults() {
     try {
-      const response = await fetch('http://localhost:5000/games/results', {});
+      const response = await fetch('https://hasses-sega-gubbar.herokuapp.com/games/results', {});
       const data = await response.json();
       setSeasonResults(data)
     } catch {
@@ -39,7 +39,7 @@ export const GameProvider = ({ children }) => {
 
   //Add new player result
   async function addResult(gameId, userId, data) {
-    const response = await fetch(`http://localhost:5000/games/${gameId}/${userId}`, {
+    const response = await fetch(`https://hasses-sega-gubbar.herokuapp.com/games/${gameId}/${userId}`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -57,7 +57,7 @@ export const GameProvider = ({ children }) => {
 
   //Edit player result
   async function editResult(id, data) {
-    const response = await fetch(`http://localhost:5000/games/${id}`, {
+    const response = await fetch(`https://hasses-sega-gubbar.herokuapp.com/games/${id}`, {
       method: "PUT",
       credentials: "include",
       headers: {
@@ -75,7 +75,7 @@ export const GameProvider = ({ children }) => {
 
     async function deleteResult(id) {
     try {
-      await fetch(`http://localhost:5000/games/${id}`, {
+      await fetch(`https://hasses-sega-gubbar.herokuapp.com/games/${id}`, {
         method: "DELETE",
         credentials: "include",
         headers: {
