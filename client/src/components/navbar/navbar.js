@@ -14,7 +14,7 @@ const Navbar = () => {
         <p>|</p>
         <Link to="/games">MATCHER</Link>
         <p>|</p>
-        <a href="#">TABELL</a>
+        <a href="http://www.korpengbg.se/Innebandy/2020-21/" target="_blank">TABELL</a>
       </div>
     </div>
   )
