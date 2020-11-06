@@ -5,10 +5,9 @@ const gamesRoute = require("./routes/games");
 const session = require('express-session')
 const port = process.env.PORT || 5000;
 const MongoStore = require('connect-mongo')(session);
+const cors = require("cors");
 
 const app = express();
-
-app.set('trust proxy', 1)
 
 //Express session
 app.use(session({
@@ -17,24 +16,22 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: {
-    secure: false,    
+    secure: true,    
     maxAge: 1000 * 60 * 60,
-    httpOnly: false
+    httpOnly: true
   }
 }))
 
 //CORS handling
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header({
-    "Access-Control-Allow-Origin": req.headers.origin,
-    "Access-Control-Allow-Credentials": true,
-    "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-    "Access-Control-Allow-Headers":
-      "Origin, X-Requested-With, Content-Type, Accept, Z-Key",
-  });
+app.use(cors({origin: "*", credentials: true, methods: "GET,POST,PUT,DELETE,OPTIONS"}));
+
+app.all('*', function(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
+  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
+  res.setHeader("Access-Control-Allow-Credentials", true);
   next();
 });
+app.set('trust proxy', 1)
 
 //Middlewares
 app.use("/games", gamesRoute);
