@@ -17,17 +17,17 @@ app.use(
 );
 
 //CORS handling
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "https://www.hassessegagubbar.se/");
-//   res.header({
-//     "Access-Control-Allow-Origin": req.headers.origin,
-//     "Access-Control-Allow-Credentials": true,
-//     "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-//     "Access-Control-Allow-Headers":
-//       "Origin, X-Requested-With, Content-Type, Accept, Z-Key",
-//   });
-//   next();
-// });
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://www.hassessegagubbar.se/");
+  res.header({
+    "Access-Control-Allow-Origin": req.headers.origin,
+    "Access-Control-Allow-Credentials": true,
+    "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+    "Access-Control-Allow-Headers":
+      "Origin, X-Requested-With, Content-Type, Accept, Z-Key",
+  });
+  next();
+});
 
 //Middlewares
 app.use("/games", gamesRoute);
