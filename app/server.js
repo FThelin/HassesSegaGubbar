@@ -25,10 +25,15 @@ app.use(session({
 //CORS handling
 app.use(cors({origin: "https://blissful-goldwasser-54cf6f.netlify.app/", credentials: true, methods: "GET,POST,PUT,DELETE,OPTIONS"}));
 
-app.all('*', function(req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
-  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
-  res.setHeader("Access-Control-Allow-Credentials", true);
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://blissful-goldwasser-54cf6f.netlify.app/");
+  res.header({
+    "Access-Control-Allow-Origin": req.headers.origin,
+    "Access-Control-Allow-Credentials": true,
+    "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+    "Access-Control-Allow-Headers":
+      "Origin, X-Requested-With, Content-Type, Accept, Z-Key",
+  });
   next();
 });
 app.set('trust proxy', 1)
