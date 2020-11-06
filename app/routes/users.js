@@ -36,12 +36,9 @@ router.post("/login", async (req, res) => {
     return res.status(401).json("Wrong username or password");
   }
 
-  req.session.username = user.username;
-  if (user.role === "admin") {
-    req.session.role = "admin";
-  } else {
-    req.session.role = "player";
-  }
+  req.session.username = user.username; 
+  req.session.role = "player";
+  
   console.log(req.session)
   res.status(200).json(user);
 });

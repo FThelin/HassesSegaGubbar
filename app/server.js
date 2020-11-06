@@ -12,10 +12,10 @@ app.set('trust proxy', 1)
 app.use(session({
   secret: 'my cats name again',
   resave: false,
-  saveUninitialized: false,
-  cookie: { 
-    httpOnly: false, // key
-    maxAge: null
+  saveUninitialized: true,
+  cookie: {
+    secure: true,    
+    maxAge: 1000 * 60 * 60
   }
 }))
 
