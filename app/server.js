@@ -9,6 +9,7 @@ const app = express();
 
 app.set('trust proxy', 1)
 
+//Express session
 app.use(session({
   secret: 'my cats name again',
   resave: false,
