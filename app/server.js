@@ -13,7 +13,7 @@ app.use(
   cookieSession({
     secret: process.env.SECRET || "secretkey",
     maxAge: 1000 * 60 * 60,
-    httpOnly: true,
+    httpOnly: false,
     secure: true
   })
 );
