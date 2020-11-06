@@ -12,7 +12,7 @@ app.use(
     secret: process.env.SECRET || "secretkey",
     maxAge: 1000 * 60 * 60,
     httpOnly: false,
-    keys: ["role"],
+    secureProxy: true,
   })
 );
 
