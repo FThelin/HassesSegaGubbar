@@ -16,6 +16,7 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   const getLoggedInUser = () => {
+    console.log(document.cookie)
     if (document.cookie) {
       let user = JSON.parse(localStorage.getItem("user"));
       setLoggedInUser(user);
@@ -64,7 +65,6 @@ export const UserProvider = ({ children }) => {
   //Update user password
   async function updateUser(id, value) {
     try {
-      console.log(id, value)
       await fetch(`https://hasses-sega-gubbar.herokuapp.com/users/${id}`, {
         method: "PUT",
         credentials: "include",
