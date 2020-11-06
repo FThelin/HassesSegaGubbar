@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const usersRoute = require("./routes/users");
 const gamesRoute = require("./routes/games");
-import session from 'express-session'
+const session = require('express-session')
 const port = process.env.PORT || 5000;
 
 const app = express();
