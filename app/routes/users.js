@@ -2,6 +2,7 @@ const express = require("express");
 const User = require("../models/user");
 const router = express.Router();
 const bcrypt = require("bcrypt");
+const cors = require('cors')
 
 router.use(express.json());
 
@@ -29,7 +30,7 @@ router.post("/register", async (req, res) => {
 });
 
 // Login user
-router.post("/login", async (req, res) => {
+router.post("/login", cors(), async (req, res) => {
   const user = await User.findOne({ username: req.body.username });
 
   if (!user || !(await bcrypt.compare(req.body.password, user.password))) {

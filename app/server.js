@@ -23,7 +23,7 @@ app.use(session({
 }))
 
 //CORS handling
-app.use(cors());
+app.options('/users/login', cors())
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "https://blissful-goldwasser-54cf6f.netlify.app");
