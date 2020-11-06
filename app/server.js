@@ -4,6 +4,7 @@ const usersRoute = require("./routes/users");
 const gamesRoute = require("./routes/games");
 const session = require('express-session')
 const port = process.env.PORT || 5000;
+const MongoStore = require('connect-mongo')(session);
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.set('trust proxy', 1)
 //Express session
 app.use(session({
   secret: 'my cats name again',
+  store: new MongoStore(options),
   resave: false,
   saveUninitialized: true,
   cookie: {
