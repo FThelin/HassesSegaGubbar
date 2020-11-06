@@ -17,7 +17,8 @@ export default function ChangePassword() {
 
   const {
     loggedInUser,
-    updateUser
+    updateUser,
+    setShowStatusMessage
   } = useUserContext();
 
   const handleClickOpen = () => {
@@ -33,6 +34,7 @@ export default function ChangePassword() {
           updateUser(loggedInUser._id, newPassword)
           setPasswordsDoMatch(true)
           setOpen(false)
+          setShowStatusMessage(true)
       } else {
           setPasswordsDoMatch(false)
       }
@@ -77,7 +79,7 @@ export default function ChangePassword() {
             Ändra
           </Button>
         </DialogActions>
-          {passwordsDoMatch ? null : <p style={{color: "red", textAlign:"center"}}>Lösenorden matchar inte</p>}  
+          {passwordsDoMatch ? null : <p style={{color: "red", textAlign:"center"}}>Lösenorden matchar inte</p>}
       </Dialog>
     </div>
   );

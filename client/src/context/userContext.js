@@ -9,6 +9,7 @@ export function useUserContext() {
 export const UserProvider = ({ children }) => {
   const [loggedInUser, setLoggedInUser] = useState("");
   const [successfulLogin, setSuccessfulLogin] = useState(" ");
+  const [showStatusMessage, setShowStatusMessage] = React.useState(false);
 
   useEffect(() => {
     getLoggedInUser();
@@ -79,7 +80,7 @@ export const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ loggedInUser, successfulLogin, loginUser, logoutUser, updateUser }}
+      value={{ loggedInUser, successfulLogin, loginUser, logoutUser, updateUser, showStatusMessage, setShowStatusMessage }}
     >
       {children}
     </UserContext.Provider>

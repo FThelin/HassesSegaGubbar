@@ -9,7 +9,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { UserProvider } from './context/userContext'
 import { GameProvider } from './context/gameContext'
 
-function App() { 
+function App() {  
 
   return (
     <div className="app">
@@ -21,7 +21,7 @@ function App() {
               <Main />        
               <Navbar />
             </Router>
-            </GameProvider>
+            </GameProvider>              
           </UserProvider>
         </ThemeProvider>
     </div>

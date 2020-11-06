@@ -11,7 +11,7 @@ app.use(
   cookieSession({
     secret: process.env.SECRET || "secretkey",
     maxAge: 1000 * 60 * 60,
-    httpOnly: false,
+    httpOnly: true,
     keys: ["role"],
   })
 );
@@ -44,5 +44,3 @@ app.listen(port, () =>
 );
 
 module.exports = app;
-
-//mongo "mongodb+srv://cluster0.fab9t.mongodb.net/<dbname>" --username FredrikThelin
