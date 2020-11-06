@@ -15,6 +15,7 @@ app.use(
     maxAge: 1000 * 60 * 60,
     httpOnly: false,
     secureProxy: true,
+    domain: "herokuapp.com"
   })
 );
 
