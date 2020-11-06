@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
   } else {
     req.session.role = "player";
   }
-
+  console.log(req.session)
   res.status(200).json(user);
 });
 
