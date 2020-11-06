@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
 
     const user = await User.findOne({ _id: game.player });
     console.log(user)
-    console.log(req.session.username)
+    console.log(req.session)
     if (
       user.username === req.session.username ||
       req.session.role === "admin"
