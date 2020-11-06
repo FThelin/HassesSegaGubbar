@@ -13,9 +13,8 @@ app.use(
   cookieSession({
     secret: process.env.SECRET || "secretkey",
     maxAge: 1000 * 60 * 60,
-    httpOnly: false,
-    secureProxy: true,
-    domain: "herokuapp.com"
+    httpOnly: true,
+    secure: true
   })
 );
 
