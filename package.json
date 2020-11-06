@@ -12,7 +12,8 @@
     "bcrypt": "^5.0.0",
     "mongoose": "*",
     "express-session": "*",
-    "connect-mongo": "*"
+    "connect-mongo": "*",
+    "cors": "*"
  },
   "repository": {
     "type": "git",
