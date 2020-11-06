@@ -7,6 +7,7 @@ const port = process.env.PORT || 5000;
 const MongoStore = require('connect-mongo')(session);
 
 const app = express();
+const options = { useUnifiedTopology: true, useNewUrlParser: true };
 
 app.set('trust proxy', 1)
 
@@ -41,7 +42,6 @@ app.use("/games", gamesRoute);
 app.use("/users", usersRoute);
 
 //Connect to database
-const options = { useUnifiedTopology: true, useNewUrlParser: true };
 mongoose.connect("mongodb+srv://FredrikThelin:Minora0805@cluster0.fab9t.mongodb.net/HassesSegaGubbar?retryWrites=true&w=majority", options, () => {
   console.log("Connected to database");
 });
