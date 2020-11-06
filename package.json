@@ -11,7 +11,8 @@
     "body-parser":"*",
     "bcrypt": "^5.0.0",
     "mongoose": "*",
-    "express-session": "*"
+    "express-session": "*",
+    "connect-mongo": "*"
  },
   "repository": {
     "type": "git",
