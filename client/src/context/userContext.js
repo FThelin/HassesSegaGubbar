@@ -29,7 +29,6 @@ export const UserProvider = ({ children }) => {
     const response = await fetch("https://hasses-sega-gubbar.herokuapp.com/users/login", {
       method: "POST",
       credentials: "include",
-      mode: 'cors',
       headers: {
         "Content-Type": "application/json",
       },

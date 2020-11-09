@@ -5,7 +5,7 @@ const gamesRoute = require("./routes/games");
 const session = require('express-session')
 const port = process.env.PORT || 5000;
 const MongoStore = require('connect-mongo')(session);
-const cors = require("cors");
+//const cors = require("cors");
 
 const app = express();
 
@@ -23,20 +23,20 @@ app.use(session({
 }))
 
 //CORS handling
-app.options('/users/login', cors('http://localhost:3000'))
+// app.options('/users/login', cors('http://localhost:3000'))
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://blissful-goldwasser-54cf6f.netlify.app");
-  res.header({
-    "Access-Control-Allow-Origin": req.headers.origin,
-    "Access-Control-Allow-Credentials": true,
-    "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-    "Access-Control-Allow-Headers":
-      "Origin, X-Requested-With, Content-Type, Accept, Z-Key",
-  });
-  next();
-});
-app.set('trust proxy', 1)
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "https://blissful-goldwasser-54cf6f.netlify.app");
+//   res.header({
+//     "Access-Control-Allow-Origin": req.headers.origin,
+//     "Access-Control-Allow-Credentials": true,
+//     "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+//     "Access-Control-Allow-Headers":
+//       "Origin, X-Requested-With, Content-Type, Accept, Z-Key",
+//   });
+//   next();
+// });
+// app.set('trust proxy', 1)
 
 //Middlewares
 app.use("/games", gamesRoute);
