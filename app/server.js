@@ -11,7 +11,7 @@ app.use(
   cookieSession({
     secret: process.env.SECRET || "secretkey",
     maxAge: 1000 * 60 * 60 * 2,
-    httpOnly: false,
+    httpOnly: true,
     sameSite: "none",
     keys: ["username"]
   })
