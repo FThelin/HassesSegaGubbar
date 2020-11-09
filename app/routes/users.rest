@@ -2,9 +2,9 @@ POST https://hasses-sega-gubbar.herokuapp.com/users/register
 Content-Type: application/json
 
 {
-"username": "Enga",
-"password": "12345",
-"name": "Johan Engström"
+"username": "123",
+"password": "123",
+"name": "123"
 }
 
 ###
