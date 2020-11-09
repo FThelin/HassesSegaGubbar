@@ -12,7 +12,8 @@ app.use(
     secret: process.env.SECRET || "secretkey",
     maxAge: 1000 * 60 * 60 * 2,
     httpOnly: false,
-    sameSite: "none"
+    sameSite: "none",
+    domain: ".herokuapp.com"
   })
 );
 

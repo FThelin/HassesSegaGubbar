@@ -12,11 +12,12 @@ export const UserProvider = ({ children }) => {
   const [showStatusMessage, setShowStatusMessage] = React.useState(false);
 
   useEffect(() => {
+    console.log("inne")
     getLoggedInUser();
   }, []);
 
   const getLoggedInUser = () => {
-    console.log(document.cookie)
+    console.log(!!document.cookie)
     if (document.cookie) {
       let user = JSON.parse(localStorage.getItem("user"));
       setLoggedInUser(user);
