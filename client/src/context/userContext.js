@@ -12,7 +12,6 @@ export const UserProvider = ({ children }) => {
   const [showStatusMessage, setShowStatusMessage] = React.useState(false);
 
   useEffect(() => {
-    console.log("inne")
     getLoggedInUser();
   }, []);
 
