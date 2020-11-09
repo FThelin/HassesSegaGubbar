@@ -5,7 +5,7 @@ const gamesRoute = require("./routes/games");
 const session = require('express-session')
 const port = process.env.PORT || 5000;
 const MongoStore = require('connect-mongo')(session);
-//const cors = require("cors");
+const cors = require("cors");
 
 const app = express();
 
@@ -18,13 +18,12 @@ app.use(session({
   cookie: {
     secure: false,    
     maxAge: 1000 * 60 * 60,
-    httpOnly: false,
-    mode: 'cors'
+    httpOnly: false
   }
 }))
 
 //CORS handling
-//app.options('/users/login', cors())
+app.options('/users/login', cors())
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "https://blissful-goldwasser-54cf6f.netlify.app");
