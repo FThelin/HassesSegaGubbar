@@ -35,7 +35,7 @@ app.use(function (req, res, next) {
       "Origin, X-Requested-With, Content-Type, Accept, Z-Key",
   });
   next();
-// });
+});
 // app.set('trust proxy', 1)
 
 //Middlewares
