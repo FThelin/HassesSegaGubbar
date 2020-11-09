@@ -10,9 +10,8 @@ const app = express();
 app.use(
   cookieSession({
     secret: process.env.SECRET || "secretkey",
-    maxAge: 1000 * 60 * 60,
+    maxAge: 1000 * 60 * 60 * 2,
     httpOnly: false,
-    secure: true,
     sameSite: "none"
   })
 );
@@ -29,6 +28,8 @@ app.use(function (req, res, next) {
   });
   next();
 });
+
+app.set('trust proxy', 1)
 
 //Middlewares
 app.use("/games", gamesRoute);
