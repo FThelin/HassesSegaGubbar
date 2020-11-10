@@ -19,6 +19,7 @@ const Navbar = () => {
         <p>|</p>
         <a href="http://www.korpengbg.se/Innebandy/2020-21/" target="_blank">TABELL</a>
       </div>
+      <button onClick={() => console.log(!!document.cookie)}>cookie</button>
       {showStatusMessage ? <StatusMessage /> : null}
     </div>
   )
