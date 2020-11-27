@@ -38,7 +38,7 @@ app.use("/users", usersRoute);
 
 //Connect to database
 const options = { useUnifiedTopology: true, useNewUrlParser: true };
-mongoose.connect("mongodb+srv://FredrikThelin:Minora0805@cluster0.fab9t.mongodb.net/HassesSegaGubbar?retryWrites=true&w=majority", options, () => {
+mongoose.connect("mongodb+srv://FredrikThelin:password@cluster0.fab9t.mongodb.net/HassesSegaGubbar?retryWrites=true&w=majority", options, () => {
   console.log("Connected to database");
 });
 
